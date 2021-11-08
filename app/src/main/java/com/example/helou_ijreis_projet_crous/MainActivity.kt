@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.Toast
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -22,7 +24,7 @@ class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
         description = "Situé dans le hall du bâtiment",
         favorite = false,
         linkPhoto = "http://www.stockcrous.fr/Photos%20stuctures/500x/Orleans/Campus/CAFETERIAS/MINI%20R/MINI%20R.jpg",
-        latitude = 47.845765,
+        latitude = 40.845765,
         longitude = 1.936779,
         info = "Localisation Situé dans le hall",
         adress = "MINI R Campus 45000 Orléans"
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
         favorite = false,
         linkPhoto = "http://www.stockcrous.fr/Photos%20stuctures/500x/Orleans/Campus/CAFETERIAS/MINI%20R/MINI%20R.jpg",
         latitude = 47.845765,
-        longitude = 1.936779,
+        longitude = 5.936779,
         info = "Localisation Situé dans le hall",
         adress = "L'Anatidé Campus 45000 Orléans"
     )
@@ -61,6 +63,24 @@ class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
         listCrous.addCrous(MINIR)
         listCrous.addCrous(RULahitolle)
         listCrous.addCrous(LAnatidé)
+
+        val mapButton = findViewById<Button>(R.id.button)
+        mapButton.setOnClickListener{
+
+            displayCrousMap()
+            //val supportMapFragment: SupportMapFragment = SupportMapFragment.newInstance()
+
+            //supportMapFragment.getMapAsync(this)
+            //val fragmentTransaction = supportFragmentManager.beginTransaction()
+
+            //fragmentTransaction.commit()
+
+
+            //val fragmentTransaction = supportFragmentManager.beginTransaction()
+            //val fragment = CrousMapFragment.newInstance(listCrous.getAllCrous())
+            //fragmentTransaction.replace(R.id.a_main_lyt_fragment_container, fragment)
+            //fragmentTransaction.commit()
+        }
 
     /*var pager = findViewById<ViewPager2>(R.id.view_pager2)
         var tl = findViewById<TabLayout>(R.id.tab_layout)
@@ -97,6 +117,16 @@ class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
        fragmentTransaction.commit()
     }
 
+    private fun displayCrousMap(){
+        val bundle = Bundle()
+        bundle.putSerializable(MAP_CROUS, listCrous.getAllCrous())
+        val fragment = CrousMapFragment()
+        fragment.arguments = bundle
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.a_main_lyt_fragment_container, fragment)
+        fragmentTransaction.commit()
+
+    }
     override fun favFromFragment(name: String) {
         TODO("Not yet implemented")
     }
