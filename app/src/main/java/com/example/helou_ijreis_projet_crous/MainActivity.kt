@@ -82,16 +82,16 @@ class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
             //fragmentTransaction.commit()
         }
 
-    /*var pager = findViewById<ViewPager2>(R.id.view_pager2)
+    var pager = findViewById<ViewPager2>(R.id.view_pager2)
         var tl = findViewById<TabLayout>(R.id.tab_layout)
-        pager.adapter=FragmentAdapter(supportFragmentManager,lifecycle)
+        pager.adapter=FragmentAdapter(supportFragmentManager,lifecycle, listCrous.getAllCrous(), favCrous)
 
         TabLayoutMediator(tl, pager) {
                 tab, position ->
             tab.text = tabTitle[position]
-        }.attach()*/
+        }.attach()
 
-        displayCrousList()
+        //displayCrousList()
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater

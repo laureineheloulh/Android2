@@ -55,7 +55,7 @@ class CrousMapFragment : Fragment(), OnMapReadyCallback {
         fun newInstance(crous: ArrayList<Crous>) =
             CrousMapFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(ARG_CROUS, crous)
+                    putSerializable(MAP_CROUS, crous)
 
                 }
             }
