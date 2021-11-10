@@ -6,55 +6,55 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.Toast
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import org.json.JSONObject
+import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
     var tabTitle = arrayOf("List", "Map", "Info")
     private val listCrous = ListCrous()
     private var favCrous= arrayListOf<String>()
 
+    val retrofit = Retrofit.Builder()
+    //private val crousLocalDataset = JSONObject()
     private val MINIR = Crous(
-        //id = "r486",
-        name = "MINI R",
+        id = "r486",
+        title = "MINI R",
         type = "Cafétéria",
         zone = "Orléans",
-        description = "Situé dans le hall du bâtiment",
+        short_desc = "Situé dans le hall du bâtiment",
         favorite = false,
-        linkPhoto = "http://www.stockcrous.fr/Photos%20stuctures/500x/Orleans/Campus/CAFETERIAS/MINI%20R/MINI%20R.jpg",
+        photo = "https://www.crous-versailles.fr/wp-content/uploads/sites/17/2016/04/Rest-de-Neuville.jpg",
         latitude = 40.845765,
         longitude = 1.936779,
-        info = "Localisation Situé dans le hall",
-        adress = "MINI R Campus 45000 Orléans"
+        infos = "Localisation Situé dans le hall",
+        contact = "MINI R Campus 45000 Orléans"
     )
 
     private val RULahitolle = Crous(
-       // id = "r782",
-        name = "RULahitolle",
+        id = "r782",
+        title = "RULahitolle",
         type = "Restaurant",
         zone = "Bourges",
-        description = "Situé près de l'INSA et de l'antenne ",
+        short_desc = "Situé près de l'INSA et de l'antenne ",
         favorite = false,
-        linkPhoto = "http://www.stockcrous.fr/Photos%20stuctures/500x/Bourges/RU%20LAHITOLLE/RU_lahitolle.jpeg",
+        photo = "https://www.crous-amiens.fr/wp-content/uploads/sites/9/2020/05/wifi.gif",
         latitude = 47.0810645,
         longitude = 2.414766,
-        info = "Localisation Situé près de l'INSA",
-        adress = "RU Lahitolle 15 rue Maurice Roy 1800"
+        infos = "Localisation Situé près de l'INSA",
+        contact = "RU Lahitolle 15 rue Maurice Roy 1800"
     )
     private val LAnatidé = Crous(
-       // id = "r481",
-        name = "L'Anatidé",
+        id = "r481",
+        title = "L'Anatidé",
         type = "Restaurant",
         zone = "Orléans",
-        description = "Situé près du collegium Sciences",
+        short_desc = "Situé près du collegium Sciences",
         favorite = false,
-        linkPhoto = "http://www.stockcrous.fr/Photos%20stuctures/500x/Orleans/Campus/CAFETERIAS/MINI%20R/MINI%20R.jpg",
+        photo = "https://www.stockcrous.fr/Photos%20stuctures/500x/Orleans/Campus/CAFETERIAS/MINI%20R/MINI%20R.jpg",
         latitude = 47.845765,
         longitude = 5.936779,
-        info = "Localisation Situé dans le hall",
-        adress = "L'Anatidé Campus 45000 Orléans"
+        infos = "Localisation Situé dans le hall",
+        contact = "L'Anatidé Campus 45000 Orléans"
     )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

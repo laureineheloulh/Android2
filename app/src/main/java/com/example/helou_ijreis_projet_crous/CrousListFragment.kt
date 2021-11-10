@@ -1,6 +1,5 @@
 package com.example.helou_ijreis_projet_crous
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -62,22 +61,22 @@ class CrousListFragment : Fragment(),CrousAdapter.OnItemClickListener {
 
     override fun onItemClick(position: Int) {
         val crous: Crous = crousShelf[position]
-        Toast.makeText(context, "Item ${crous.name} clicked", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Item ${crous.title} clicked", Toast.LENGTH_SHORT).show()
 
         val intent = Intent(context, DetailActivity::class.java)
         intent.putExtra("crous", crous)
-        intent.putExtra("fav", favCrous.contains(crous.name))
+        intent.putExtra("fav", favCrous.contains(crous.title))
         this.startActivityForResult(intent, 1)
     }
 
     override fun favFromAdapter(position: Int) {
         val crous: Crous = crousShelf[position]
-        Toast.makeText(context, "Item ${crous.name} favorite", Toast.LENGTH_SHORT).show()
-        if (favCrous.contains(crous.name)) {
-            favCrous.remove(crous.name)
+        Toast.makeText(context, "Item ${crous.title} favorite", Toast.LENGTH_SHORT).show()
+        if (favCrous.contains(crous.title)) {
+            favCrous.remove(crous.title)
         } else {
-            favCrous.add(crous.name)
+            favCrous.add(crous.title)
         }
-        listener?.favFromFragment(crous.name)
+        listener?.favFromFragment(crous.title)
     }
 }

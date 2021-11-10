@@ -4,23 +4,26 @@ class ListCrous {
     private val crousMap = HashMap<String, Crous>()
 
     fun addCrous(aCrous: Crous) {
-        crousMap[aCrous.name] = aCrous
+        crousMap[aCrous.id] = aCrous
     }
 
-    fun getCrous(name: String): Crous? {
-        return crousMap[name]
+    fun getCrous(id: String): Crous? {
+        return crousMap[id]
     }
 
     fun getAllCrous(): ArrayList<Crous> {
-        return ArrayList(crousMap.values.sortedBy { it.name })
+        return ArrayList(crousMap.values.sortedBy { it.title })
 
     }
 
+    fun setFavorite(id: String) {
+        crousMap[id]?.favorite = true
+    }
     fun getCrousByType(type: String): List<Crous> {
         return crousMap
             .filterValues { it.type == type }
             .values
-            .sortedBy { it.type }
+            .sortedBy { it.title }
             .toList()
     }
 
