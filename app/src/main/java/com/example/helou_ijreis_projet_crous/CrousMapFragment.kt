@@ -71,9 +71,7 @@ class CrousMapFragment : Fragment(), OnMapReadyCallback {
                 .snippet(crousShelf[i].type)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker))
         )
-
-        gmap.moveCamera(CameraUpdateFactory.newLatLng(location))
-
          }
+        gmap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(crousShelf[0].latitude, crousShelf[0].longitude)))
     }
 }

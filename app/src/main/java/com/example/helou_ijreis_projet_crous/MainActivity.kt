@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
     var tabTitle = arrayOf("List", "Map", "Info")
     private val listCrous = ListCrous()
     private var favCrous= arrayListOf<String>()
-
+    private lateinit var pager: ViewPager2
     private val MINIR = Crous(
         //id = "r486",
         name = "MINI R",
@@ -64,28 +64,8 @@ class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
         listCrous.addCrous(RULahitolle)
         listCrous.addCrous(LAnatidé)
 
-        //val mapButton = findViewById<Button>(R.id.button)
 
-        /*
-        mapButton.setOnClickListener{
-
-            displayCrousMap()
-            //val supportMapFragment: SupportMapFragment = SupportMapFragment.newInstance()
-
-            //supportMapFragment.getMapAsync(this)
-            //val fragmentTransaction = supportFragmentManager.beginTransaction()
-
-            //fragmentTransaction.commit()
-
-
-            //val fragmentTransaction = supportFragmentManager.beginTransaction()
-            //val fragment = CrousMapFragment.newInstance(listCrous.getAllCrous())
-            //fragmentTransaction.replace(R.id.a_main_lyt_fragment_container, fragment)
-            //fragmentTransaction.commit()
-        }
-        */
-
-    var pager = findViewById<ViewPager2>(R.id.view_pager2)
+        pager = findViewById<ViewPager2>(R.id.view_pager2)
         var tl = findViewById<TabLayout>(R.id.tab_layout)
         pager.adapter=FragmentAdapter(supportFragmentManager,lifecycle, listCrous.getAllCrous(), favCrous)
 
@@ -105,7 +85,7 @@ class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
         return when (item.itemId) {
             R.id.menu_action_refresh -> {
                 Toast.makeText(this, "That's refreshing", Toast.LENGTH_SHORT).show()
-              displayCrousList()
+              pager.setCurrentItem(0)
                 true
             }
             else -> super.onOptionsItemSelected(item)

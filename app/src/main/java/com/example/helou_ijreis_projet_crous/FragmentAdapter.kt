@@ -19,4 +19,8 @@ class FragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle, va
             else -> CrousListFragment.newInstance(crousList, favCrous)
         }
     }
+
+    fun refreshData(){
+
+    }
 }
