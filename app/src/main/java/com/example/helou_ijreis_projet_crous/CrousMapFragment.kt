@@ -1,19 +1,22 @@
 package com.example.helou_ijreis_projet_crous
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
 
 const val MAP_CROUS = "crous_map"
 
-class CrousMapFragment : Fragment(), OnMapReadyCallback {
+class CrousMapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     private lateinit var mView: View
     private lateinit var mapView: MapView
@@ -62,16 +65,30 @@ class CrousMapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(gmap: GoogleMap) {
-     for(i in 0 until crousShelf.size){
-        val location : LatLng = LatLng(crousShelf[i].latitude, crousShelf[i].longitude)
-            val markerOptions = MarkerOptions()
-            gmap.addMarker(markerOptions
-                .position(location)
-                .title(crousShelf[i].title)
-                .snippet(crousShelf[i].type)
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker))
-        )
-         }
-        gmap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(crousShelf[0].latitude, crousShelf[0].longitude)))
+        gmap.setOnInfoWindowClickListener(this)
+        for(i in 0 until crousShelf.size){
+            val location : LatLng = LatLng(crousShelf[i].geolocalisation[0], crousShelf[i].geolocalisation[1])
+                val markerOptions = MarkerOptions()
+                gmap.addMarker(markerOptions
+                    .position(location)
+                    .title(crousShelf[i].title)
+                    .snippet(crousShelf[i].type)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker))
+            )
+        }
+        //position de notre belle école
+        gmap.moveCamera(CameraUpdateFactory.newLatLng(LatLng(47.845765, 5.94)))
+    }
+
+    override fun onInfoWindowClick(marker: Marker) {
+        val crous: Crous = crousShelf.filter {
+            it.title == marker.title
+        }.first()
+        Toast.makeText(context, "Item ${crous.title} clicked", Toast.LENGTH_SHORT).show()
+
+        val intent = Intent(context, DetailActivity::class.java)
+        intent.putExtra(ARG_CROUS, crous)
+        intent.putExtra("fav", crous.favorite)
+        this.startActivityForResult(intent, 1)
     }
 }

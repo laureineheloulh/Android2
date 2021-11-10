@@ -8,6 +8,7 @@ import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -24,6 +25,7 @@ class DetailActivity : AppCompatActivity() {
     private var fav : Boolean = false
     private lateinit var crous : Crous
     private lateinit var imageView:ImageView
+    private lateinit var imgBttn: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +35,16 @@ class DetailActivity : AppCompatActivity() {
         fav= intent.getBooleanExtra("fav",false)
 
         imageView=findViewById<ImageView>(R.id.imageView)
+
+        // il y a un problème d'affichage quand le lien de la photo commence par http donc on la remplace par https
+        if(crous.photo!!.startsWith("http:") == true){
+            crous.photo = crous.photo!!.drop(5)
+            crous.photo = "https:" + crous.photo
+        }
         Glide.with(this).load(crous.photo).into(imageView)
         //requestImage()
-
-
+        imgBttn= findViewById<ImageButton>(R.id.imageButton)
+        imgBttn.visibility = View.VISIBLE
        // Picasso.get().load(crous.photo).into(imageView)
 
         var nameTextView =findViewById<TextView>(R.id.name)
@@ -46,10 +54,15 @@ class DetailActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.type).text = "Type: ${crous.type.toString()}"
         findViewById<TextView>(R.id.zone).text = "Zone: ${crous.zone.toString()}"
         findViewById<TextView>(R.id.description).text = "Description: ${crous.short_desc.toString()}"
-        findViewById<TextView>(R.id.info).text = "Info: ${crous.photo.toString()}"
+        findViewById<TextView>(R.id.info).text = "Info: ${crous.infos}"
 
         if(fav){
             findViewById<ImageButton>(R.id.imageButton).setImageResource(R.drawable.ic_baseline_star_24)
+        }
+
+        var btnBack = findViewById<Button>(R.id.back_button)
+        btnBack.setOnClickListener(){
+            onBackPressed()
         }
 
     }
@@ -73,7 +86,6 @@ class DetailActivity : AppCompatActivity() {
     }
 */
     fun favButton(view: View) {
-        val imgBttn= findViewById<ImageButton>(R.id.imageButton)
         if(fav){
             imgBttn.setImageResource(R.drawable.ic_baseline_star_border_24)
             fav = !fav

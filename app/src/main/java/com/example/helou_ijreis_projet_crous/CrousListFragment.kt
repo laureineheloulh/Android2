@@ -1,5 +1,6 @@
 package com.example.helou_ijreis_projet_crous
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -23,6 +26,15 @@ class CrousListFragment : Fragment(),CrousAdapter.OnItemClickListener {
         fun refreshPostDetail()
     }
 
+    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            var crous = result.data?.getSerializableExtra(ARG_CROUS) as Crous
+            crous.favorite = result.data?.getBooleanExtra("fav", false) == true
+            crousShelf.add(crous)
+            if(crous.favorite) favCrous.add(crous.title)
+        }
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,19 +76,18 @@ class CrousListFragment : Fragment(),CrousAdapter.OnItemClickListener {
         Toast.makeText(context, "Item ${crous.title} clicked", Toast.LENGTH_SHORT).show()
 
         val intent = Intent(context, DetailActivity::class.java)
-        intent.putExtra("crous", crous)
-        intent.putExtra("fav", favCrous.contains(crous.title))
+        intent.putExtra(ARG_CROUS, crous)
+        intent.putExtra("fav", crous.favorite)
         this.startActivityForResult(intent, 1)
     }
 
     override fun favFromAdapter(position: Int) {
         val crous: Crous = crousShelf[position]
         Toast.makeText(context, "Item ${crous.title} favorite", Toast.LENGTH_SHORT).show()
-        if (favCrous.contains(crous.title)) {
-            favCrous.remove(crous.title)
-        } else {
-            favCrous.add(crous.title)
-        }
+        crousShelf[position].favorite = !crousShelf[position].favorite
         listener?.favFromFragment(crous.title)
+
     }
+
+
 }
