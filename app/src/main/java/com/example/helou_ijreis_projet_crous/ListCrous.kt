@@ -17,7 +17,7 @@ class ListCrous {
     }
 
     fun setFavorite(id: String) {
-        crousMap[id]?.favorite = true
+        crousMap[id]?.favorite = !crousMap[id]?.favorite!!
     }
     fun getCrousByType(type: String): List<Crous> {
         return crousMap

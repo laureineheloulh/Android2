@@ -10,7 +10,6 @@ class FragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle, va
     override fun getItemCount(): Int {
         return 3
     }
-
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> CrousListFragment.newInstance(crousList, favCrous)
@@ -18,9 +17,5 @@ class FragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle, va
             2 -> CrousInfoFragment.newInstance()
             else -> CrousListFragment.newInstance(crousList, favCrous)
         }
-    }
-
-    fun refreshData(){
-
     }
 }

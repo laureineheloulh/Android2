@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 
 android {
@@ -46,6 +47,10 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
+    //Library that helps to easily load images from URL
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+
+    //Implementing Google's Open Source licenses notice
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
 }

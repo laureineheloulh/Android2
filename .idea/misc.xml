@@ -15,7 +15,12 @@
         <entry key="..\:/Users/Admin/Desktop/project/app/src/main/res/layout/menu.xml" value="0.1634963768115942" />
         <entry key="..\:/Users/Admin/Desktop/project/app/src/main/res/layout/row_crous.xml" value="0.4" />
         <entry key="..\:/Users/Admin/Desktop/project/app/src/main/res/menu/menu.xml" value="0.536" />
-        <entry key="..\:/Users/Hadi/Desktop/ISMIN/Web + Mobile app/android/app/src/main/res/layout/activity_main.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/Hadi/Desktop/ISMIN/Web + Mobile app/android/app/src/main/res/layout/activity_detail.xml" value="0.264" />
+        <entry key="..\:/Users/Hadi/Desktop/ISMIN/Web + Mobile app/android/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Hadi/Desktop/ISMIN/Web + Mobile app/android/app/src/main/res/layout/fragment_crous_info.xml" value="0.264" />
+        <entry key="..\:/Users/Hadi/Desktop/ISMIN/Web + Mobile app/android/app/src/main/res/layout/fragment_crous_list.xml" value="0.178125" />
+        <entry key="..\:/Users/Hadi/Desktop/ISMIN/Web + Mobile app/android/app/src/main/res/layout/fragment_crous_map.xml" value="0.178125" />
+        <entry key="..\:/Users/Hadi/Desktop/ISMIN/Web + Mobile app/android/app/src/main/res/layout/row_crous.xml" value="0.536" />
       </map>
     </option>
   </component>
