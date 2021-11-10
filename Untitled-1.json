@@ -1,0 +1,50 @@
+[
+    {
+    "id":"hadi",
+    "type":"Restaurant",
+    "zone":"VAL D'OISE",
+    "title":"RU Neuville",
+    "photo":"https://www.crous-versailles.fr/wp-content/uploads/sites/17/2016/04/Rest-de-Neuville.jpg",
+    "short_desc":"A Cergy",
+    "geolocalisation":"A Cergy",
+    "contact":"RU Neuville  5 mail Gay-Lussac - 95031 Cergy-Pontoise",
+    "closing":0,
+    "infos":"Localisation A Cergy \nHoraires 11h30 à 13h30 \nPaiements possibles  especes \n IZLY"
+    },
+
+    {
+        "id":"r1",
+        "type":"Restaurant",
+        "zone":"AMIENS CAMPUS",
+        "title":"Restaurant du Bailly",
+        "photo":"https://www.crous-amiens.fr/wp-content/uploads/sites/9/2014/06/restau-bailly-retaille.jpg",
+        "short_desc":"Au campus, à proximité de l'IUT et de la faculté de STAPS","geolocalisation":[49.8728469,2.265],
+        "contact":"Restaurant du Bailly  avenue des Facultés, SALOUEL Téléphone : 03.22.71.91.50 E-mail : ru.amiens-sud.secretariat@crous-amiens.fr",
+        "closing":0,
+        "infos":"Localisation Au campus, à proximité de l'IUT et de la faculté de STAPS \nHoraires Restauration traditionnelle : Ouvert de 11h à 13h45 du lundi au vendredi et de 18h30 à 20h15 du lundi au jeudi Snack et sandwicherie : ouvert de 8h à 14h \nPratique  Accessible aux personnes à mobilité réduite \n\nPaiements possibles  IZLY"
+    },
+
+    {
+        "id":"r1015",
+        "type":"Kiosque",
+        "zone":"Porte des Alpes",
+        "title":"Kiosque de Bron",
+        "photo":"https://www.crous-amiens.fr/wp-content/uploads/sites/9/2020/05/carte-bleue.gif",
+        "short_desc":"Située sur le campus Porte des Alpes de l'Université Lyon 2 à Bron, dans le bâtiment H.",
+        "geolocalisation":[45.7217314,4.916875],
+        "contact":"Kiosque de Bron 5 avenue P. Mendès France 69500 Bron  E-mail : restaurant.bron@crous-lyon.fr",
+        "closing":0,
+        "infos":"Localisation Située sur le campus Porte des Alpes de l'Université Lyon 2 à Bron, dans le bâtiment H. \nHoraires Du lundi au vendredi  7h30 - 17h   Fermeture du 1er novembre au 5 novembre inclus.  \nMoyen d'accès Tram T2 \nPaiements possibles  Carte bancaire \n IZLY"
+    },
+    
+    {
+        "id":"r1029",
+        "type":"Cafétéria",
+        "zone":"Rennes Centre",
+        "title":"Cafet' Droit",
+        "photo":"https://www.crous-rennes.fr/wp-content/uploads/sites/18/2018/01/cafet-Droit-Rennes-pouriresto.jpg",
+        "short_desc":"Un espace libre-service (restauration rapide salée et sucrée, froide mais aussi à réchauffer sur-place), et aussi un espace de détente","geolocalisation":[48.1175904,-1.669927],"contact":"Cafet' Droit 9 rue Jean Macé, Rennes",
+        "closing":0,
+        "infos":"Localisation Un espace libre-service (restauration rapide salée et sucrée, froide mais aussi à réchauffer sur-place), et aussi un espace de détente \nHoraires de 8h30 à 16h, du lundi au vendredi \nPratique  Accessible aux personnes à mobilité réduite \n WIFI disponible \nPaiements possibles  Carte bancaire \n IZLY"
+    }
+]

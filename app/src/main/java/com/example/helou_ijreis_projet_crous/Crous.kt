@@ -2,14 +2,15 @@ package com.example.helou_ijreis_projet_crous
 import java.io.Serializable
 
 data class Crous(
-    val name: String,
+    val id:String,
+    val title: String,
     val type: String,
     val zone: String,
-    val description: String,
+    val short_desc: String,
     var favorite: Boolean,
-    val linkPhoto: String? = null,
+    val photo: String? = null,
     val latitude: Double,
     val longitude: Double,
-    val info: String,
-    val adress: String
+    val infos: String,
+    val contact: String
 ) : Serializable

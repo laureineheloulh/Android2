@@ -2,16 +2,28 @@ package com.example.helou_ijreis_projet_crous
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.VolleyError
+import com.android.volley.toolbox.ImageLoader
+import com.android.volley.toolbox.ImageRequest
+import com.android.volley.toolbox.NetworkImageView
+import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
 
 class DetailActivity : AppCompatActivity() {
     private var fav : Boolean = false
     private lateinit var crous : Crous
+    private lateinit var imageView:ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,24 +32,46 @@ class DetailActivity : AppCompatActivity() {
 
         fav= intent.getBooleanExtra("fav",false)
 
-        var imageView=findViewById<ImageView>(R.id.imageView)
-        //Picasso.get().load(crous.linkPhoto).into(imageView)
+        imageView=findViewById<ImageView>(R.id.imageView)
+        Glide.with(this).load(crous.photo).into(imageView)
+        //requestImage()
+
+
+       // Picasso.get().load(crous.photo).into(imageView)
 
         var nameTextView =findViewById<TextView>(R.id.name)
-        nameTextView.text = "Name: ${crous.name.toString()}"
+        nameTextView.text = "Name: ${crous.title.toString()}"
 
 
         findViewById<TextView>(R.id.type).text = "Type: ${crous.type.toString()}"
         findViewById<TextView>(R.id.zone).text = "Zone: ${crous.zone.toString()}"
-        findViewById<TextView>(R.id.description).text = "Description: ${crous.description.toString()}"
-        findViewById<TextView>(R.id.info).text = "Info: ${crous.info.toString()}"
+        findViewById<TextView>(R.id.description).text = "Description: ${crous.short_desc.toString()}"
+        findViewById<TextView>(R.id.info).text = "Info: ${crous.photo.toString()}"
 
         if(fav){
             findViewById<ImageButton>(R.id.imageButton).setImageResource(R.drawable.ic_baseline_star_24)
         }
 
     }
+/*
+    private fun requestImage() {
 
+        val requestQueue: RequestQueue = Volley.newRequestQueue(this)
+
+        val imageRequest: ImageRequest = ImageRequest(crous.photo, {
+            @Override
+            fun onResponse(response: Bitmap){
+                imageView.setImageBitmap(response)
+            }
+        },0,0,ImageView.ScaleType.FIT_CENTER,null, {
+            @Override
+            fun onErrorResponse(error: VolleyError){
+
+            }
+        });
+        requestQueue.add(imageRequest)
+    }
+*/
     fun favButton(view: View) {
         val imgBttn= findViewById<ImageButton>(R.id.imageButton)
         if(fav){
@@ -52,7 +86,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onBackPressed() {
         val returnIntent = Intent()
         returnIntent.putExtra("fav", fav)
-        returnIntent.putExtra("crousname",crous.name )
+        returnIntent.putExtra("crousname",crous.title )
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
         super.onBackPressed()

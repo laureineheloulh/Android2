@@ -62,12 +62,12 @@ class CrousMapFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(gmap: GoogleMap) {
-        for(i in 0 until crousShelf.size){
+     for(i in 0 until crousShelf.size){
         val location : LatLng = LatLng(crousShelf[i].latitude, crousShelf[i].longitude)
             val markerOptions = MarkerOptions()
             gmap.addMarker(markerOptions
                 .position(location)
-                .title(crousShelf[i].name)
+                .title(crousShelf[i].title)
                 .snippet(crousShelf[i].type)
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker))
         )
