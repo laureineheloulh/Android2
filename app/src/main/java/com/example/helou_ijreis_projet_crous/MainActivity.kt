@@ -64,7 +64,9 @@ class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
         listCrous.addCrous(RULahitolle)
         listCrous.addCrous(LAnatidé)
 
-        val mapButton = findViewById<Button>(R.id.button)
+        //val mapButton = findViewById<Button>(R.id.button)
+
+        /*
         mapButton.setOnClickListener{
 
             displayCrousMap()
@@ -81,6 +83,7 @@ class MainActivity : AppCompatActivity(),CrousListFragment.CrousListListener {
             //fragmentTransaction.replace(R.id.a_main_lyt_fragment_container, fragment)
             //fragmentTransaction.commit()
         }
+        */
 
     var pager = findViewById<ViewPager2>(R.id.view_pager2)
         var tl = findViewById<TabLayout>(R.id.tab_layout)
